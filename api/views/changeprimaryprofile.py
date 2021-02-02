@@ -9,7 +9,7 @@ from rest_framework import status
 class ChangePrimaryProfile(APIView):
 
     @method_decorator(cinta_authentication())
-    def post(self, request):
+    def patch(self, request):
         data = request.data
         image_index = data.get("image_index")
         controller = ChangePrimaryProfileController(user_id=request.cinta_user_id, image_index=image_index)

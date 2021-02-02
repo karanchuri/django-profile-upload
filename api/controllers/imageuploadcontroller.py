@@ -69,5 +69,5 @@ class ImageUploadController:
             ProfilePictures.objects.filter(profile__user_id=self.user_id, image_index=self.image_index).\
                 update(url=self.file_name)
         else:
-            ProfilePictures.objects.create(profile__user_id=self.user_id, image_index=self.image_index,
+            ProfilePictures.objects.create(profile_id=self.user_id, image_index=self.image_index,
                                            url=self.file_name)
