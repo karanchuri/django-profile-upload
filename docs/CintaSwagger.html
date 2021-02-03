@@ -1,0 +1,572 @@
+<html><head><script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Cinta ProfileMS",
+    "contact": {}
+  },
+  "host": "127.0.0.1:9000",
+  "basePath": "/api/profile",
+  "securityDefinitions": {
+    "auth": {
+      "type": "basic"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "health",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "health",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/health"
+            },
+            "examples": {
+              "application/json": {
+                "status": "success"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "register",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "register",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/registerrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/register"
+            },
+            "examples": {
+              "application/json": {
+                "token": "db03227b20f0a9bf848e6740ee4f7c1f6a5f6a4d"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "login",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "login",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/loginrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/login"
+            },
+            "examples": {
+              "application/json": {
+                "token": "224b3d99fe59890254f7d69f979724a094afbe1e"
+              }
+            },
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/get-profile-details": {
+      "get": {
+        "summary": "get profile details",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "getprofiledetails",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/getprofiledetails"
+            },
+            "examples": {
+              "application/json": {
+                "name": "Karan",
+                "age": 25,
+                "skills": [
+                  "draw",
+                  "paint",
+                  "dance"
+                ],
+                "profile_pictures": [
+                  {
+                    "url": "/tmp/final_1_1_1612286731.JPG",
+                    "is_primary": false,
+                    "image_index": 1
+                  },
+                  {
+                    "url": "/tmp/final_1_2_1612286696.JPG",
+                    "is_primary": false,
+                    "image_index": 2
+                  }
+                ]
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/update-profile": {
+      "post": {
+        "summary": "update profile",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "updateprofile",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updateprofilerequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/update-image/1": {
+      "post": {
+        "summary": "upload image",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "uploadimage",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/change-primary-profile": {
+      "patch": {
+        "summary": "change primary profile",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "changeprimaryprofile",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/changeprimaryprofilerequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            },
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/get-profile-image": {
+      "get": {
+        "summary": "getfile",
+        "tags": [
+          "Misc"
+        ],
+        "operationId": "getfile",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "file_name",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            },
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "health": {
+      "title": "health",
+      "example": {
+        "status": "success"
+      },
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "registerrequest": {
+      "title": "registerrequest",
+      "example": {
+        "email": "kjchuri@gmail.com",
+        "password": "helloworld@123"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "register": {
+      "title": "register",
+      "example": {
+        "token": "db03227b20f0a9bf848e6740ee4f7c1f6a5f6a4d"
+      },
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "loginrequest": {
+      "title": "loginrequest",
+      "example": {
+        "username": "kjchuri@ymail.com",
+        "password": "helloworld@123"
+      },
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "login": {
+      "title": "login",
+      "example": {
+        "token": "224b3d99fe59890254f7d69f979724a094afbe1e"
+      },
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "getprofiledetails": {
+      "title": "getprofiledetails",
+      "example": {
+        "name": "Karan",
+        "age": 25,
+        "skills": [
+          "draw",
+          "paint",
+          "dance"
+        ],
+        "profile_pictures": [
+          {
+            "url": "/tmp/final_1_1_1612286731.JPG",
+            "is_primary": false,
+            "image_index": 1
+          },
+          {
+            "url": "/tmp/final_1_2_1612286696.JPG",
+            "is_primary": false,
+            "image_index": 2
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "profile_pictures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfilePicture"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "age",
+        "skills",
+        "profile_pictures"
+      ]
+    },
+    "ProfilePicture": {
+      "title": "ProfilePicture",
+      "example": {
+        "url": "/tmp/final_1_1_1612286731.JPG",
+        "is_primary": false,
+        "image_index": 1
+      },
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "is_primary": {
+          "type": "boolean"
+        },
+        "image_index": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "url",
+        "is_primary",
+        "image_index"
+      ]
+    },
+    "updateprofilerequest": {
+      "title": "updateprofilerequest",
+      "example": {
+        "name": "Karan",
+        "age": "25",
+        "skills": [
+          "draw",
+          "paint",
+          "dance"
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "age",
+        "skills"
+      ]
+    },
+    "changeprimaryprofilerequest": {
+      "title": "changeprimaryprofilerequest",
+      "example": {
+        "image_index": 2
+      },
+      "type": "object",
+      "properties": {
+        "image_index": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "image_index"
+      ]
+    }
+  },
+  "security": [
+    {
+      "auth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}</pre></body></html>

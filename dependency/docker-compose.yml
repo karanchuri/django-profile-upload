@@ -1,0 +1,37 @@
+version: '2.0'
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:11
+    command: ["postgres"]
+    restart: always
+    expose:
+      - "5432"
+    env_file:
+      - env/.cintaenv
+    ports:
+      - '5432:5432'
+    volumes:
+      - './Docker/config/postgresql.conf:/usr/share/postgresql/postgresql.conf'
+      - './Docker/volumes/postgres/data:/var/lib/postgresql/data'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "17000m"
+        max-file: "5"
+
+  redis:
+    image: 'redis:3.0.6'
+    environment:
+      - 'REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL'
+    ports:
+      - '6379:6379'
+    volumes:
+      - './Docker/volumes/redis/data:/var/lib/redis/data'
+    restart: 'always'
+    logging:
+      driver: json-file
+      options:
+        max-size: 17000m
+        max-file: '5'
