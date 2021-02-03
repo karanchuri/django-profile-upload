@@ -32,6 +32,6 @@ You can find postman and swagger in docs folder
 
 Postman requests are in-order of execution.
 
-##ERD:
+## ERD:
 Also available in docs folder in raw format.
 ![ScreenShot](https://github.com/karanchuri/django-profile-upload/blob/master/docs/EDR.jpg?raw=true)
